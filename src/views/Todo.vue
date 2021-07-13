@@ -5,14 +5,14 @@
         <p class="title">Todo List</p>
         <div class="todo">
           <div class="flex mb_15">
-            <input type="text" class="input_add" v-model="addText" @keyup.enter="addText()">
+            <input type="text" name="todo" class="input_add" v-model="addText" @keyup.enter="addText()">
             <button @click="pushAdd" class="button_add">追加</button>
           </div>
-          <div class="flex" v-for="(todo,index) in todolists" :key="index">
+          <div class="flex" v-for="item in todolists" :key="item.id">
             <input type="text" class="input_apdate" v-model="item.todo">
             <div class="button_set">
               <button @click="pushUpdate(item.id,item.todo)" class="button_update">更新</button>
-              <button @click="pushDelete" class="button_delete">削除</button>
+              <button @click="pushDelete(item.id)" class="button_delete">削除</button>
             </div>
           </div>
         </div>
@@ -26,32 +26,32 @@ import axios from "axios";
 export default {
   data() {
     return{
-      addText:'',
+      addText:"",
       todolists:[],
     };
   },
   methods:{
     async getTodo(){
-      const resData = await axios.get ("https://shielded-bastion-35302.herokuapp.com/api/todo");
+      const resData = await this.$axios.get ("https://shielded-bastion-35302.herokuapp.com/api/todo");
       this.todolists=resData.data.data;
     },
     async pushAdd(){
       const sendData={
         todo:this.addText,
       };
-      await axios.post("https://shielded-bastion-35302.herokuapp.com/api/todo",sendData);
-      await this.getTodo();
+      await this.$axios.post("https://shielded-bastion-35302.herokuapp.com/api/todo",sendData);
+      this.getTodo();
     },
     async pushUpdate(id,todo){
       const sendData={
         todo:todo,
       };
-      await axios.put("https://shielded-bastion-35302.herokuapp.com/api/todo"+id,sendData);
-      await this.getTodo;
+      await this.$axios.put("https://shielded-bastion-35302.herokuapp.com/api/todo"+id,sendData);
+      this.getTodo();
     },
     async pushDelete(id){
-      await axios.delete("https://shielded-bastion-35302.herokuapp.com/api/todo"+id);
-      await this.getTodo;
+      await this.$axios.delete("https://shielded-bastion-35302.herokuapp.com/api/todo"+id);
+      this.getTodo();
     },
   },
   created(){
@@ -105,6 +105,7 @@ export default {
       -moz-appearance: none;
             appearance: none;
     font-size: 14px;
+    color: black;
     outline: none;
   }
 
@@ -117,6 +118,7 @@ export default {
       -moz-appearance: none;
             appearance: none;
     font-size: 14px;
+    color: black;
     outline: none;
   }
 
