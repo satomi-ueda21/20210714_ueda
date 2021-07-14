@@ -5,7 +5,7 @@
         <p class="title">Todo List</p>
         <div class="todo">
           <div class="flex mb_15">
-            <input type="text" name="todo" class="input_add" v-model="addText" @keyup.enter="addText()">
+            <input type="text" name="todo" class="input_add" v-model="addText" @keydown.enter="pushAdd()" placeholder="ToDoを入力">
             <button @click="pushAdd" class="button_add">追加</button>
           </div>
           <div class="flex" v-for="item in todolists" :key="item.id">
@@ -41,6 +41,7 @@ export default {
       };
       await axios.post("https://shielded-bastion-35302.herokuapp.com/api/todo",sendData);
       await this.getTodo();
+      this.addText="";
     },
     async pushUpdate(id,todo){
       const sendData={
@@ -83,7 +84,7 @@ export default {
   .flex{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
   }
 
   .mb_15{
@@ -158,7 +159,7 @@ export default {
     margin-right: 5px;
   }
 
-  .button-update:hover {
+  .button_update:hover {
     background-color: #fa9770;
     border-color: #fa9770;
     color: #fff;
