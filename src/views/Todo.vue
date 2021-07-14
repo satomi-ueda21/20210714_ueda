@@ -110,7 +110,7 @@ export default {
     outline: none;
   }
 
-  .input_update {
+  .input_apdate {
     width: 30%;
     padding: 5px;
     border-radius: 5px;
@@ -119,7 +119,7 @@ export default {
       -moz-appearance: none;
             appearance: none;
     font-size: 14px;
-    color: black !important;
+    color: black;
     outline: none;
   }
 
