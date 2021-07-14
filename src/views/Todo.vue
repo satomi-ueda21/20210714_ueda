@@ -83,8 +83,7 @@ export default {
   .flex{
     display: flex;
     justify-content: space-between;
-    color:black;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
   }
 
   .mb_15{
@@ -120,7 +119,7 @@ export default {
       -moz-appearance: none;
             appearance: none;
     font-size: 14px;
-    color: black;
+    color: black !important;
     outline: none;
   }
 
@@ -156,7 +155,7 @@ export default {
     cursor: pointer;
     transition: 0.4s;
     outline: none;
-    margin-right: 3px;
+    margin-right: 5px;
   }
 
   .button-update:hover {
