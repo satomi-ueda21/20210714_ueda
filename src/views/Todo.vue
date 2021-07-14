@@ -46,11 +46,11 @@ export default {
       const sendData={
         todo:todo,
       };
-      await axios.put("https://shielded-bastion-35302.herokuapp.com/api/todo"+id,sendData);
+      await axios.put("https://shielded-bastion-35302.herokuapp.com/api/todo/"+id,sendData);
       await this.getTodo();
     },
     async pushDelete(id){
-      await axios.delete("https://shielded-bastion-35302.herokuapp.com/api/todo"+id);
+      await axios.delete("https://shielded-bastion-35302.herokuapp.com/api/todo/"+id);
       await this.getTodo();
     },
   },
@@ -83,6 +83,8 @@ export default {
   .flex{
     display: flex;
     justify-content: space-between;
+    color:black;
+    margin-bottom: 3px;
   }
 
   .mb_15{
@@ -154,6 +156,7 @@ export default {
     cursor: pointer;
     transition: 0.4s;
     outline: none;
+    margin-right: 3px;
   }
 
   .button-update:hover {
