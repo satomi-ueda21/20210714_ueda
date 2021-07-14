@@ -22,7 +22,7 @@
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 export default {
   data() {
     return{
@@ -32,26 +32,26 @@ export default {
   },
   methods:{
     async getTodo(){
-      const resData = await this.$axios.get ("https://shielded-bastion-35302.herokuapp.com/api/todo");
+      const resData = await axios.get ("https://shielded-bastion-35302.herokuapp.com/api/todo");
       this.todolists=resData.data.data;
     },
     async pushAdd(){
       const sendData={
         todo:this.addText,
       };
-      await this.$axios.post("https://shielded-bastion-35302.herokuapp.com/api/todo",sendData);
-      this.getTodo();
+      await axios.post("https://shielded-bastion-35302.herokuapp.com/api/todo",sendData);
+      await this.getTodo();
     },
     async pushUpdate(id,todo){
       const sendData={
         todo:todo,
       };
-      await this.$axios.put("https://shielded-bastion-35302.herokuapp.com/api/todo"+id,sendData);
-      this.getTodo();
+      await axios.put("https://shielded-bastion-35302.herokuapp.com/api/todo"+id,sendData);
+      await this.getTodo();
     },
     async pushDelete(id){
-      await this.$axios.delete("https://shielded-bastion-35302.herokuapp.com/api/todo"+id);
-      this.getTodo();
+      await axios.delete("https://shielded-bastion-35302.herokuapp.com/api/todo"+id);
+      await this.getTodo();
     },
   },
   created(){
