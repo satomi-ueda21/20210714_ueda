@@ -5,7 +5,7 @@
         <p class="title">Todo List</p>
         <div class="todo">
           <div class="flex mb_15">
-            <input type="text" name="todo" class="input_add" v-model="addText" @keydown.enter="pushAdd()" placeholder="ToDoを入力">
+            <input type="text" name="todo" class="input_add" v-model="addText" @keydown.enter="pushAdd()" placeholder="ToDoを入力してください">
             <button @click="pushAdd" class="button_add">追加</button>
           </div>
           <div class="flex" v-for="item in todolists" :key="item.id">
